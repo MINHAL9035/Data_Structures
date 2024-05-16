@@ -18,3 +18,4 @@ function quickSort(array) {
 let array = [12, 10, 100, 90, 150, -40, -70, 1.5];
 let sortedArray = quickSort(array)
 console.log(sortedArray);
+

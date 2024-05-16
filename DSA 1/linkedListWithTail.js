@@ -9,7 +9,7 @@ class LinkedList {
     constructor() {
         this.head = null
         this.tail = null
-        this.size = 0
+        this.size = 0 // Corrected the initialization
     }
 
     isEmpty() {
@@ -22,7 +22,6 @@ class LinkedList {
 
     prepend(value) {
         const node = new Node(value)
-
         if (this.isEmpty()) {
             this.head = node
             this.tail = node
@@ -34,22 +33,72 @@ class LinkedList {
     }
 
     append(value) {
-
         const node = new Node(value)
-
         if (this.isEmpty()) {
             this.head = node
             this.tail = node
         } else {
             this.tail.next = node
             this.tail = node
-
         }
-
         this.size++
-
     }
 
+    insert(index, value) {
+        if (index === 0) {
+            this.prepend(value)
+        } else if (index === this.size) {
+            this.append(value)
+        } else {
+            const node = new Node(value)
+            let prev = this.head
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next
+            }
+            node.next = prev.next
+            prev.next = node
+            this.size++
+        }
+    }
+
+    removeFrom(index) {
+        if (index === 0) {
+            if (this.head === this.tail) {
+                this.head = null
+                this.tail = null
+            } else {
+                this.head = this.head.next
+            }
+        } else {
+            let prev = this.head
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next
+            }
+            prev.next = prev.next.next
+            if (prev.next === null) {
+                this.tail = prev
+            }
+        }
+        this.size--
+    }
+
+    removeFromValue(value) {
+        if (this.head.value === value) {
+            this.removeFrom(0)
+        } else {
+            let prev = this.head
+            while (prev.next && prev.next.value !== value) {
+                prev = prev.next
+            }
+            if (prev.next) {
+                prev.next = prev.next.next
+                if (prev.next === null) {
+                    this.tail = prev
+                }
+                this.size--
+            }
+        }
+    }
     removeFromFront() {
         if (this.isEmpty()) {
             console.log('list is empty');
@@ -88,37 +137,51 @@ class LinkedList {
 
     }
 
-    print() {
-        if (this.isEmpty()) {
-            console.log('List is empty')
-        } else {
-            let curr = this.head
-            let listValues = ''
-            while (curr) {
-                listValues = listValues + `${curr.value} `
-                curr = curr.next
+    search(value) {
+        let curr = this.head
+        let i = 0
+        while (curr) {
+            if (curr.value === value) {
+                return i
             }
-            console.log(listValues)
+            curr = curr.next
+            i++
         }
+        return -1
     }
 
+    reverse() {
+        let prev = null
+        let curr = this.head
+        this.tail = this.head // Update the tail to the current head
+        while (curr) {
+            let next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.head = prev
+    }
 
+    print() {
+        let curr = this.head
+        while (curr) {
+            console.log(curr.value)
+            curr = curr.next
+        }
+    }
 }
 
+const linkedList = new LinkedList()
 
-const list = new LinkedList()
-console.log('List is empty:', list.isEmpty());
-console.log('list of size :', list.getSize())
+linkedList.prepend(10)
+linkedList.prepend(20)
+linkedList.prepend(30)
+linkedList.append(90)
+linkedList.append(80)
+linkedList.insert(2, 70)
+console.log(linkedList.search(70))
+linkedList.reverse()
+linkedList.print()
 
-list.print()
 
-list.prepend(10)
-
-list.print()
-list.prepend(20)
-list.prepend(5)
-list.append(500)
-list.print()
-list.removeFromFront()
-list.print()
-console.log(list.getSize());

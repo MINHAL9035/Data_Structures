@@ -92,7 +92,7 @@ const list = new doubly()
 
 
 
-const text = 'rithas'
+const text = 'hari'
 for (let j = 0; j < text.length; j++) {
     list.append(text[j])
 }

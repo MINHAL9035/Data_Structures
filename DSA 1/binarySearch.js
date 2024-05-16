@@ -9,11 +9,11 @@ function binary(arr, target) {
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
         if (arr[mid] === target) {
-            return mid; 
+            return mid;
         } else if (arr[mid] < target) {
-            left = mid + 1; 
+            left = mid + 1;
         } else {
-            right = mid - 1; 
+            right = mid - 1;
         }
     }
 
@@ -21,4 +21,8 @@ function binary(arr, target) {
 }
 
 console.log(binary([2, 2, 3, 3, 32, 43, 65, 332, 432, 445], 2));
+
+
+
+
 

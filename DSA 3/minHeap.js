@@ -64,12 +64,6 @@ class Heap {
 
 const heap = new Heap();
 
-// heap.push(25)
-// heap.push(5)
-// heap.push(40)
-// heap.push(70)
-// heap.push(90)
-// heap.push(44)
 
 heap.push(10);
 heap.push(20);
@@ -80,12 +74,6 @@ heap.push(7)
 heap.push(17)
 heap.push(3)
 
-
 console.log(heap.data);
-// heap.poll();
-// console.log(heap.data);
-// heap.poll();
-// console.log(heap.data);
-// heap.poll();
-// console.log(heap.data);
+
 

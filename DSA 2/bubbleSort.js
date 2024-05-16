@@ -19,3 +19,37 @@ let array = [12,10,100,90,150,-40,-70,1.5];
 let sortedArray = bubbleSort(array)
 console.log(sortedArray);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
